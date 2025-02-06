@@ -1,4 +1,5 @@
 
+import fr.devavance.metier.beans.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bouchaib.lemaire
  */
-@WebServlet(urlPatterns = {"/infos"})
+@WebServlet(urlPatterns = {"/"})
 public class InfosUserServlet extends HttpServlet {
 
      
@@ -37,9 +38,15 @@ public class InfosUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       User createdUser = createNewUser("alan", "mp2023t", "admin");
        
-      
+       request.setAttribute("user", createdUser);
+       this.getServletContext().getRequestDispatcher("/infos_user.jsp").forward(request, response);
     
+    }
+    
+    public User createNewUser(String username, String password, String profil){
+        return new User(username, password, profil);
     }
 
   

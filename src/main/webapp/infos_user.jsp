@@ -23,6 +23,9 @@
             <jsp:getProperty name="User" property="password"/>
             <jsp:getProperty name="User" property="profil"/>
             <jsp:getProperty name="User" property="auth"/>
+            ${ user.userName }
+            ${ user.password }
+            ${ user.profil }
         </div>
      
         <div class="credentials">

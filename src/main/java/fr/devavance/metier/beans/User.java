@@ -14,6 +14,12 @@ public class User {
 
     public User() {
     }
+    
+    public User(String username, String password, String profil) {
+        this.userName = username;
+        this.password = password;
+        this.profil = profil;
+    }
 
     public String getUserName() {
         return userName;
