@@ -4,6 +4,10 @@
     Author     : bouchaib.lemaire
 --%>
 
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.List"%>
+<%@page import="java.io.IOException"%>
+<%@page import="fr.devavance.metier.beans.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -17,7 +21,7 @@
         <title>Informations des utilisateurs</title>
     </head>
     
-        <jsp:useBean id="User" class="fr.devavance.metier.beans.User"/>
+    <jsp:useBean id="User" scope="request" class="fr.devavance.metier.beans.User"/>
         <div class="info_user">
             <jsp:getProperty name="User" property="userName"/>
             <jsp:getProperty name="User" property="password"/>
@@ -28,7 +32,24 @@
             ${ user.profil }
         </div>
      
-        <div class="credentials">
+        <div class="credentials" style="display: flex; gap: 2rem;">
+            <div>
+                <strong>Username</strong>
+                <%
+                Users users = (Users)request.getAttribute("users");
+                for(int i=0; i<users.size();i++){
+                    out.println("<p>" + users.get(i).getUserName() + "</p>");
+                }
+                %>
+            </div>
+            <div>
+                <strong>Authorized</strong>
+                <%
+                for(int i=0; i<users.size();i++){
+                out.println("<p>" + users.get(i).getAuth() + "</p>");
+                }
+                %>
+            </div>
         </div>
         
     
