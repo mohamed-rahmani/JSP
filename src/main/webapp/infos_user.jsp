@@ -16,13 +16,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Informations des utilisateurs</title>
     </head>
-    <body>
-        
+    
+        <jsp:useBean id="User" class="fr.devavance.metier.beans.User"/>
         <div class="info_user">
+            <jsp:getProperty name="User" property="userName"/>
+            <jsp:getProperty name="User" property="password"/>
+            <jsp:getProperty name="User" property="profil"/>
+            <jsp:getProperty name="User" property="auth"/>
         </div>
      
         <div class="credentials">
         </div>
         
-    </body>
+    
 </html>
